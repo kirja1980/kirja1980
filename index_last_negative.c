@@ -8,6 +8,6 @@ int index_last_negative(int array[], int count){
     if(last_index != 0){
         return last_index;
     }
-    return -1;
+    else return -1;
 }
 

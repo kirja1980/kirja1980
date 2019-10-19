@@ -7,5 +7,6 @@ int sum_between_negative(int array[], int count){
         sum += abs(array[i]);
     }
     return sum;
-    };
+    }
+    else return -1;
 }

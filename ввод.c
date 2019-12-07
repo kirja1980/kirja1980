@@ -1,6 +1,7 @@
 #include "head.h"
 char **read_text(int *number)
 {
+	int error = 0;
 	int index_s=0,max_index_s=MAX_SIZE;
 	int san=0, max_san=MAX_SIZE;
 	char symbol = ' ';
@@ -29,5 +30,5 @@ char **read_text(int *number)
 		
 	}
 	*number=index_s;
-	return text;
+	return text,error;
 }

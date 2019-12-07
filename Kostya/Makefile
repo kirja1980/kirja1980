@@ -12,7 +12,7 @@ test.o: test.c test.h
 	gcc -c test.c
 sort_text.o: sort_text.c sort_text.h
 	gcc -c sort_text.c
-clean:
+clear:
 	rm strt *.o
 	
 

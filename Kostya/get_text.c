@@ -1,4 +1,4 @@
-#include "head.h"
+#include "get_text.h"
 char **get_text(int *number)
 {
 	int index_s = 0, max_index_s = MAX_SIZE;

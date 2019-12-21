@@ -551,5 +551,42 @@ void Function6()
 //-----------------------------------------------------------------------------
 void Function7()
 {
-    printf("еще делается");
+    size_t SentenceCount = 0; 
+    char **Array = CreateArraySentence(&SentenceCount);
+    for (size_t i = 0; i < SentenceCount; ++i) 
+    {
+        char *Buffer = (char *)malloc(strlen(Array[i]) + 1);
+        if (Buffer)
+        {
+            strcpy(Buffer, Array[i]);
+            RemoveCharFromString(Buffer, ',');
+
+            size_t Index = 0;
+            size_t Count = WordCount(Buffer, strlen(Buffer));//КОЛИЧЕСТВО СЛОВ В ПРЕДЛОЖЕНИИ
+            char **ArrayWord = (char**)malloc(Count * sizeof(char*));
+            char *Word = strtok(Buffer, " ");
+            while (Word)
+            {
+                ArrayWord[Index] = (char *)malloc(strlen(Word) + 1);
+                strcpy(ArrayWord[Index], Word);
+            }
+
+            qsort(ArrayWord, Count, sizeof(ArrayWord[0]), PStrCmp); //Ñîðòèðóåì ìàññèâ ñëîâ
+
+            for (size_t j = 0; j < Count; ++j)
+            {
+                printf("%s\n", ArrayWord[j]);
+            }
+
+            for (size_t j = 0; j < Count; ++j)
+            {
+                free(ArrayWord[j]);
+            }
+            free(Buffer);
+        }
+        else //Îøèáêà âûäåëåíèÿ ïàìÿòè
+        {
+            printf("Error: memory allocation.\n");
+        }
+    }
 }

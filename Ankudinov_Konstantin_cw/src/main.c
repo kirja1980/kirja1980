@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------
-#pragma warning (disable: 4127) //для "while(true)" - так надо!
-#pragma warning (disable: 4717) //для функции "SelectFunction" (то, что она рекурсиная - нормально. Выход из неё можно произвести вызовом функции "Function6")
+#pragma warning (disable: 4127) //Г¤Г«Гї "while(true)" - ГІГ ГЄ Г­Г Г¤Г®!
+#pragma warning (disable: 4717) //Г¤Г«Гї ГґГіГ­ГЄГ¶ГЁГЁ "SelectFunction" (ГІГ®, Г·ГІГ® Г®Г­Г  Г°ГҐГЄГіГ°Г±ГЁГ­Г Гї - Г­Г®Г°Г¬Г Г«ГјГ­Г®. Г‚Г»ГµГ®Г¤ ГЁГ§ Г­ГҐВё Г¬Г®Г¦Г­Г® ГЇГ°Г®ГЁГ§ГўГҐГ±ГІГЁ ГўГ»Г§Г®ГўГ®Г¬ ГґГіГ­ГЄГ¶ГЁГЁ "Function6")
 //-----------------------------------------------------------------------------
 #include <stdlib.h>
 #include <stdio.h>
@@ -9,22 +9,22 @@
 #include <errno.h>
 #include <stdbool.h>
 //-----------------------------------------------------------------------------
-char *Text = NULL; //Входной текст
-size_t TextSize = 0; //Размер входного текста
+char *Text = NULL; //Г‚ГµГ®Г¤Г­Г®Г© ГІГҐГЄГ±ГІ
+size_t TextSize = 0; //ГђГ Г§Г¬ГҐГ° ГўГµГ®Г¤Г­Г®ГЈГ® ГІГҐГЄГ±ГІГ 
 //-----------------------------------------------------------------------------
-void Usage(); //Отобразить текст с описанием использования программы
-void ShowMenu(); //Отобразить меню
-void ToLowerString(char *String, size_t Size); //Привести строку к нижнему регистру
-size_t WordCount(const char *String, size_t Size); //Получить количество слов в строке
-void RemoveBeginSpace(char *String); //Удалить пробелы в начале строки
-void RemoveCharFromString(char *String, char Char); //Удалить символ в строке
-bool IsLetter(char Char); //Является ли символ буквой
-char** CreateArraySentence(size_t *SentenceCount); //Создать массив предложений
-char* ReplaceWord(const char *s, const char *oldW, const char *newW); //Замена строки
-int GetSubString(char *source, char *target, int from, int to); //Получить подстроку
+void Usage(); //ГЋГІГ®ГЎГ°Г Г§ГЁГІГј ГІГҐГЄГ±ГІ Г± Г®ГЇГЁГ±Г Г­ГЁГҐГ¬ ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГї ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
+void ShowMenu(); //ГЋГІГ®ГЎГ°Г Г§ГЁГІГј Г¬ГҐГ­Гѕ
+void ToLowerString(char *String, size_t Size); //ГЏГ°ГЁГўГҐГ±ГІГЁ Г±ГІГ°Г®ГЄГі ГЄ Г­ГЁГ¦Г­ГҐГ¬Гі Г°ГҐГЈГЁГ±ГІГ°Гі
+size_t WordCount(const char *String, size_t Size); //ГЏГ®Г«ГіГ·ГЁГІГј ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г«Г®Гў Гў Г±ГІГ°Г®ГЄГҐ
+void RemoveBeginSpace(char *String); //Г“Г¤Г Г«ГЁГІГј ГЇГ°Г®ГЎГҐГ«Г» Гў Г­Г Г·Г Г«ГҐ Г±ГІГ°Г®ГЄГЁ
+void RemoveCharFromString(char *String, char Char); //Г“Г¤Г Г«ГЁГІГј Г±ГЁГ¬ГўГ®Г« Гў Г±ГІГ°Г®ГЄГҐ
+bool IsLetter(char Char); //ГџГўГ«ГїГҐГІГ±Гї Г«ГЁ Г±ГЁГ¬ГўГ®Г« ГЎГіГЄГўГ®Г©
+char** CreateArraySentence(size_t *SentenceCount); //Г‘Г®Г§Г¤Г ГІГј Г¬Г Г±Г±ГЁГў ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГ©
+char* ReplaceWord(const char *s, const char *oldW, const char *newW); //Г‡Г Г¬ГҐГ­Г  Г±ГІГ°Г®ГЄГЁ
+int GetSubString(char *source, char *target, int from, int to); //ГЏГ®Г«ГіГ·ГЁГІГј ГЇГ®Г¤Г±ГІГ°Г®ГЄГі
 int PStrCmp(const void* A, const void* B);
-void ReadFile(const char *FilePath); //Чтение файла
-void SelectFunction(); //Выбор функции
+void ReadFile(const char *FilePath); //Г—ГІГҐГ­ГЁГҐ ГґГ Г©Г«Г 
+void SelectFunction(); //Г‚Г»ГЎГ®Г° ГґГіГ­ГЄГ¶ГЁГЁ
 //-----------------------------------------------------------------------------
 void Function1();
 void Function2();
@@ -35,7 +35,7 @@ void Function6();
 //-----------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-    if (argc == 1) //Если агументы не указанны
+    if (argc == 1) //Г…Г±Г«ГЁ Г ГЈГіГ¬ГҐГ­ГІГ» Г­ГҐ ГіГЄГ Г§Г Г­Г­Г»
     {
         printf("Error: not specified argument.\n");
         Usage();
@@ -45,10 +45,10 @@ int main(int argc, char **argv)
     char *Argument = argv[1];
     ToLowerString(Argument, strlen(Argument));
 
-    if (strcmp(Argument, "-m") == 0) //Если текст передается в виде аргумента
+    if (strcmp(Argument, "-m") == 0) //Г…Г±Г«ГЁ ГІГҐГЄГ±ГІ ГЇГҐГ°ГҐГ¤Г ГҐГІГ±Гї Гў ГўГЁГ¤ГҐ Г Г°ГЈГіГ¬ГҐГ­ГІГ 
     {
         Text = argc == 3 ? argv[2] : NULL;
-        if (Text) //Если текст не был передан в качестве значения аргумента
+        if (Text) //Г…Г±Г«ГЁ ГІГҐГЄГ±ГІ Г­ГҐ ГЎГ»Г« ГЇГҐГ°ГҐГ¤Г Г­ Гў ГЄГ Г·ГҐГ±ГІГўГҐ Г§Г­Г Г·ГҐГ­ГЁГї Г Г°ГЈГіГ¬ГҐГ­ГІГ 
         {
             TextSize = strlen(Text);
         }
@@ -57,19 +57,19 @@ int main(int argc, char **argv)
             printf("Error: not specified argument value (text).");
         }
     }
-    else if (strcmp(Argument, "-f") == 0) //Если в виде аргумента передается путь к файлу - читаем текст из файла и продолжаем
+    else if (strcmp(Argument, "-f") == 0) //Г…Г±Г«ГЁ Гў ГўГЁГ¤ГҐ Г Г°ГЈГіГ¬ГҐГ­ГІГ  ГЇГҐГ°ГҐГ¤Г ГҐГІГ±Гї ГЇГіГІГј ГЄ ГґГ Г©Г«Гі - Г·ГЁГІГ ГҐГ¬ ГІГҐГЄГ±ГІ ГЁГ§ ГґГ Г©Г«Г  ГЁ ГЇГ°Г®Г¤Г®Г«Г¦Г ГҐГ¬
     {
         char *FilePath = argc == 3 ? argv[2] : NULL;
-        if (FilePath) //Если путь к файлу был передан в качестве значения аргумент - читаем файл
+        if (FilePath) //Г…Г±Г«ГЁ ГЇГіГІГј ГЄ ГґГ Г©Г«Гі ГЎГ»Г« ГЇГҐГ°ГҐГ¤Г Г­ Гў ГЄГ Г·ГҐГ±ГІГўГҐ Г§Г­Г Г·ГҐГ­ГЁГї Г Г°ГЈГіГ¬ГҐГ­ГІ - Г·ГЁГІГ ГҐГ¬ ГґГ Г©Г«
         {
             ReadFile(FilePath);
         }
-        else //Путь к файлу не был передан в качестве значения аргумента
+        else //ГЏГіГІГј ГЄ ГґГ Г©Г«Гі Г­ГҐ ГЎГ»Г« ГЇГҐГ°ГҐГ¤Г Г­ Гў ГЄГ Г·ГҐГ±ГІГўГҐ Г§Г­Г Г·ГҐГ­ГЁГї Г Г°ГЈГіГ¬ГҐГ­ГІГ 
         {
             printf("Error: not specified argument value (file path).");
         }
     }
-    else if (strcmp(Argument, "-h") == 0) //Запрос на отображения инструкции по использованию программы
+    else if (strcmp(Argument, "-h") == 0) //Г‡Г ГЇГ°Г®Г± Г­Г  Г®ГІГ®ГЎГ°Г Г¦ГҐГ­ГЁГї ГЁГ­Г±ГІГ°ГіГЄГ¶ГЁГЁ ГЇГ® ГЁГ±ГЇГ®Г«ГјГ§Г®ГўГ Г­ГЁГѕ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
     {
         Usage();
         return EXIT_SUCCESS;
@@ -106,15 +106,16 @@ void ShowMenu()
     printf("4 - Find in each sentence a string of maximum length that begins and ends with a digit. Display the found substrings in descending order of the length of the substring.\n");
     printf("5 - Show text. personal initiative :)\n");
     printf("6 - Close application.\n");
+    printf("7 - course assignment.\n");
     printf("Select menu item (1, 2, 3, 4, 5 or 6)\n");
     printf("Item: ");
 }
 //-----------------------------------------------------------------------------
 void ToLowerString(char *String, size_t Size)
 {
-    for (size_t i = 0; i < Size; ++i) //Обходим строку
+    for (size_t i = 0; i < Size; ++i) //ГЋГЎГµГ®Г¤ГЁГ¬ Г±ГІГ°Г®ГЄГі
     {
-        if (isalpha(String[i]) != 0) //Если текущий символ является буквой - переводим её в нижний регистр
+        if (isalpha(String[i]) != 0) //Г…Г±Г«ГЁ ГІГҐГЄГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« ГїГўГ«ГїГҐГІГ±Гї ГЎГіГЄГўГ®Г© - ГЇГҐГ°ГҐГўГ®Г¤ГЁГ¬ ГҐВё Гў Г­ГЁГ¦Г­ГЁГ© Г°ГҐГЈГЁГ±ГІГ°
         {
             String[i] = (char)tolower((int)String[i]);
         }
@@ -123,24 +124,24 @@ void ToLowerString(char *String, size_t Size)
 //-----------------------------------------------------------------------------
 size_t WordCount(const char *String, size_t Size)
 {
-    size_t Result = 0; //Количество найденных слов
-    bool PreviousCharLetter = false; //Флаг предыдущего символа (буква или нет)
-    for (size_t i = 0; i < Size; ++i) //Обходим строку
+    size_t Result = 0; //ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г­Г Г©Г¤ГҐГ­Г­Г»Гµ Г±Г«Г®Гў
+    bool PreviousCharLetter = false; //Г”Г«Г ГЈ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГЈГ® Г±ГЁГ¬ГўГ®Г«Г  (ГЎГіГЄГўГ  ГЁГ«ГЁ Г­ГҐГІ)
+    for (size_t i = 0; i < Size; ++i) //ГЋГЎГµГ®Г¤ГЁГ¬ Г±ГІГ°Г®ГЄГі
     {
-        if (IsLetter(String[i])) //Если текущий символ является буквой
+        if (IsLetter(String[i])) //Г…Г±Г«ГЁ ГІГҐГЄГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« ГїГўГ«ГїГҐГІГ±Гї ГЎГіГЄГўГ®Г©
         {
             PreviousCharLetter = true;
         }
-        else //Текущий символ не является буквой
+        else //Г’ГҐГЄГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« Г­ГҐ ГїГўГ«ГїГҐГІГ±Гї ГЎГіГЄГўГ®Г©
         {
-            if (PreviousCharLetter) //Но если предыдущий символ был буквой - то считаем что нашли слово и сбрасываем флаг предыдущего символа
+            if (PreviousCharLetter) //ГЌГ® ГҐГ±Г«ГЁ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« ГЎГ»Г« ГЎГіГЄГўГ®Г© - ГІГ® Г±Г·ГЁГІГ ГҐГ¬ Г·ГІГ® Г­Г ГёГ«ГЁ Г±Г«Г®ГўГ® ГЁ Г±ГЎГ°Г Г±Г»ГўГ ГҐГ¬ ГґГ«Г ГЈ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГҐГЈГ® Г±ГЁГ¬ГўГ®Г«Г 
             {
                 ++Result;
                 PreviousCharLetter = false;
             }
         }
 
-        if (i == Size - 1 && PreviousCharLetter) //Последняя итерация и предыдущий символ является буквой (ситуация для последних последних слов в предложении)
+        if (i == Size - 1 && PreviousCharLetter) //ГЏГ®Г±Г«ГҐГ¤Г­ГїГї ГЁГІГҐГ°Г Г¶ГЁГї ГЁ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« ГїГўГ«ГїГҐГІГ±Гї ГЎГіГЄГўГ®Г© (Г±ГЁГІГіГ Г¶ГЁГї Г¤Г«Гї ГЇГ®Г±Г«ГҐГ¤Г­ГЁГµ ГЇГ®Г±Г«ГҐГ¤Г­ГЁГµ Г±Г«Г®Гў Гў ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГЁ)
         {
             ++Result;
         }
@@ -184,22 +185,22 @@ char** CreateArraySentence(size_t *SentenceCount)
         strcpy(Buffer, Text);
 
         char *Char = strchr(Buffer, '.');
-        while (Char) //Считаем количество предложений
+        while (Char) //Г‘Г·ГЁГІГ ГҐГ¬ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГ©
         {
             (*SentenceCount)++;
             Char = strchr(Char + 1, '.');
         }
 
-        size_t Index = 0; //Индекс текущего обрабатываемого предложения
-        Array = (char**)malloc(*SentenceCount * sizeof(char*)); //Выделяем память под массив с предложениями
-        if (Array) //Выделение памяти прошло успешно
+        size_t Index = 0; //Г€Г­Г¤ГҐГЄГ± ГІГҐГЄГіГ№ГҐГЈГ® Г®ГЎГ°Г ГЎГ ГІГ»ГўГ ГҐГ¬Г®ГЈГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
+        Array = (char**)malloc(*SentenceCount * sizeof(char*)); //Г‚Г»Г¤ГҐГ«ГїГҐГ¬ ГЇГ Г¬ГїГІГј ГЇГ®Г¤ Г¬Г Г±Г±ГЁГў Г± ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГїГ¬ГЁ
+        if (Array) //Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ°Г®ГёГ«Г® ГіГ±ГЇГҐГёГ­Г®
         {
             Char = strtok(Buffer, ".");
             while (Char)
             {
-                RemoveBeginSpace(Char); //Удаляем проблемы в начале строки
+                RemoveBeginSpace(Char); //Г“Г¤Г Г«ГїГҐГ¬ ГЇГ°Г®ГЎГ«ГҐГ¬Г» Гў Г­Г Г·Г Г«ГҐ Г±ГІГ°Г®ГЄГЁ
                 size_t SentenceSize = strlen(Char);
-                Array[Index] = (char*)malloc(SentenceSize * sizeof(char) + 1); //Выделяем память под предложение
+                Array[Index] = (char*)malloc(SentenceSize * sizeof(char) + 1); //Г‚Г»Г¤ГҐГ«ГїГҐГ¬ ГЇГ Г¬ГїГІГј ГЇГ®Г¤ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГҐ
                 if (Array[Index])
                 {
                     memmove(Array[Index], Char, SentenceSize);
@@ -207,7 +208,7 @@ char** CreateArraySentence(size_t *SentenceCount)
                     ++Index;
                     Char = strtok(NULL, ".");
                 }
-                else //Выделение памяти прошло с ошибкой
+                else //Г‚Г»Г¤ГҐГ«ГҐГ­ГЁГҐ ГЇГ Г¬ГїГІГЁ ГЇГ°Г®ГёГ«Г® Г± Г®ГёГЁГЎГЄГ®Г©
                 {
                     printf("Error: memory allocation.\n");
                     return NULL;
@@ -258,7 +259,7 @@ char* ReplaceWord(const char *String, const char *OldString, const char *NewStri
 
         Result[Iterator] = '\0';
     }
-    else //Ошибка выделения памяти
+    else //ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ
     {
         printf("Error: memory allocation.\n");
     }
@@ -304,18 +305,18 @@ int PStrCmp(const void* A, const void* B)
 void ReadFile(const char *FilePath)
 {
     FILE *File = fopen(FilePath, "r");
-    if (File) //Если файл открыт успешно
+    if (File) //Г…Г±Г«ГЁ ГґГ Г©Г« Г®ГІГЄГ°Г»ГІ ГіГ±ГЇГҐГёГ­Г®
     {
-        fseek(File, 0, SEEK_END); //Переводим курсор в конец файла
-        long FileSize = ftell(File); //Получаем размер файла
-        rewind(File); //Возвращаем курсор в исходное положение
-        Text = (char *)malloc(FileSize * sizeof(char)); //Выделяем память равную размеру файла
-        if (Text) //Память выделена успешно
+        fseek(File, 0, SEEK_END); //ГЏГҐГ°ГҐГўГ®Г¤ГЁГ¬ ГЄГіГ°Г±Г®Г° Гў ГЄГ®Г­ГҐГ¶ ГґГ Г©Г«Г 
+        long FileSize = ftell(File); //ГЏГ®Г«ГіГ·Г ГҐГ¬ Г°Г Г§Г¬ГҐГ° ГґГ Г©Г«Г 
+        rewind(File); //Г‚Г®Г§ГўГ°Г Г№Г ГҐГ¬ ГЄГіГ°Г±Г®Г° Гў ГЁГ±ГµГ®Г¤Г­Г®ГҐ ГЇГ®Г«Г®Г¦ГҐГ­ГЁГҐ
+        Text = (char *)malloc(FileSize * sizeof(char)); //Г‚Г»Г¤ГҐГ«ГїГҐГ¬ ГЇГ Г¬ГїГІГј Г°Г ГўГ­ГіГѕ Г°Г Г§Г¬ГҐГ°Гі ГґГ Г©Г«Г 
+        if (Text) //ГЏГ Г¬ГїГІГј ГўГ»Г¤ГҐГ«ГҐГ­Г  ГіГ±ГЇГҐГёГ­Г®
         {
-            TextSize = fread(Text, sizeof(char), FileSize, File); //Читаем содержимое файла и помещаем его в память
+            TextSize = fread(Text, sizeof(char), FileSize, File); //Г—ГЁГІГ ГҐГ¬ Г±Г®Г¤ГҐГ°Г¦ГЁГ¬Г®ГҐ ГґГ Г©Г«Г  ГЁ ГЇГ®Г¬ГҐГ№Г ГҐГ¬ ГҐГЈГ® Гў ГЇГ Г¬ГїГІГј
             Text[TextSize] = '\0';
         }
-        else //Ошибка выделения памяти
+        else //ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ
         {
             printf("Error: memory allocation.\n");
         }
@@ -332,7 +333,7 @@ void SelectFunction()
     ShowMenu();
     int SelectedItem = 0;
     scanf("%d", &SelectedItem);
-    if (SelectedItem) //Если был введен индекс пункта меню - проверяем его
+    if (SelectedItem) //Г…Г±Г«ГЁ ГЎГ»Г« ГўГўГҐГ¤ГҐГ­ ГЁГ­Г¤ГҐГЄГ± ГЇГіГ­ГЄГІГ  Г¬ГҐГ­Гѕ - ГЇГ°Г®ГўГҐГ°ГїГҐГ¬ ГҐГЈГ®
     {
         switch (SelectedItem)
         {
@@ -342,10 +343,11 @@ void SelectFunction()
         case 4: Function4(); break;
         case 5: Function5(); break;
         case 6: Function6(); break;
+        case 7: Function7(); break;
         default: printf("Error: invalid selected item '%d'\n\n", SelectedItem); break;
         }
     }
-    else //Введенное значение невалидное (скорее всего ввели текст)
+    else //Г‚ГўГҐГ¤ГҐГ­Г­Г®ГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ Г­ГҐГўГ Г«ГЁГ¤Г­Г®ГҐ (Г±ГЄГ®Г°ГҐГҐ ГўГ±ГҐГЈГ® ГўГўГҐГ«ГЁ ГІГҐГЄГ±ГІ)
     {
         printf("Error: invalid entered value.\n\n");
     }
@@ -354,14 +356,14 @@ void SelectFunction()
 //-----------------------------------------------------------------------------
 void Function1()
 {
-    size_t SentenceCount = 0; //Количество предложений
+    size_t SentenceCount = 0; //ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГ©
     char **Array = CreateArraySentence(&SentenceCount);
-    for (size_t i = 0; i < SentenceCount; ++i) //Обходим все предложения
+    for (size_t i = 0; i < SentenceCount; ++i) //ГЋГЎГµГ®Г¤ГЁГ¬ ГўГ±ГҐ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
     {
         bool ShowSentence = i % 2 != 0;
-        if (!ShowSentence) //Если текущее предложение чётное - анализируем его
+        if (!ShowSentence) //Г…Г±Г«ГЁ ГІГҐГЄГіГ№ГҐГҐ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГҐ Г·ВёГІГ­Г®ГҐ - Г Г­Г Г«ГЁГ§ГЁГ°ГіГҐГ¬ ГҐГЈГ®
         {
-            ShowSentence = WordCount(Array[i], strlen(Array[i])) % 2 != 0; //Если количество слов в предложении чётное - удаляем его. А точнее, просто не выводим в консоль.
+            ShowSentence = WordCount(Array[i], strlen(Array[i])) % 2 != 0; //Г…Г±Г«ГЁ ГЄГ®Г«ГЁГ·ГҐГ±ГІГўГ® Г±Г«Г®Гў Гў ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГЁ Г·ВёГІГ­Г®ГҐ - ГіГ¤Г Г«ГїГҐГ¬ ГҐГЈГ®. ГЂ ГІГ®Г·Г­ГҐГҐ, ГЇГ°Г®Г±ГІГ® Г­ГҐ ГўГ»ГўГ®Г¤ГЁГ¬ Гў ГЄГ®Г­Г±Г®Г«Гј.
         }
 
         if (ShowSentence)
@@ -375,18 +377,18 @@ void Function1()
         }
     }
 
-    for (size_t i = 0; i < SentenceCount; ++i) //Очищаем память каждого предложения
+    for (size_t i = 0; i < SentenceCount; ++i) //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј ГЄГ Г¦Г¤Г®ГЈГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
     {
         free(Array[i]);
     }
-    free(Array); //Очищаем память массива
+    free(Array); //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј Г¬Г Г±Г±ГЁГўГ 
 }
 //-----------------------------------------------------------------------------
 void Function2()
 {
-    size_t SentenceCount = 0; //Количество предложений
+    size_t SentenceCount = 0; //ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГ©
     char **Array = CreateArraySentence(&SentenceCount);
-    for (size_t i = 0; i < SentenceCount; ++i) //Обходим все предложения
+    for (size_t i = 0; i < SentenceCount; ++i) //ГЋГЎГµГ®Г¤ГЁГ¬ ГўГ±ГҐ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
     {
         char *Buffer = (char *)malloc(strlen(Array[i]) + 1);
         if (Buffer)
@@ -406,7 +408,7 @@ void Function2()
                 Word = strtok(NULL, " ");
             }
 
-            qsort(ArrayWord, Count, sizeof(ArrayWord[0]), PStrCmp); //Сортируем массив слов
+            qsort(ArrayWord, Count, sizeof(ArrayWord[0]), PStrCmp); //Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГў Г±Г«Г®Гў
 
             for (size_t j = 0; j < Count; ++j)
             {
@@ -419,17 +421,17 @@ void Function2()
             }
             free(Buffer);
         }
-        else //Ошибка выделения памяти
+        else //ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ
         {
             printf("Error: memory allocation.\n");
         }
     }
 
-    for (size_t i = 0; i < SentenceCount; ++i) //Очищаем память каждого предложения
+    for (size_t i = 0; i < SentenceCount; ++i) //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј ГЄГ Г¦Г¤Г®ГЈГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
     {
         free(Array[i]);
     }
-    free(Array); //Очищаем память массива
+    free(Array); //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј Г¬Г Г±Г±ГЁГўГ 
 }
 //-----------------------------------------------------------------------------
 void Function3()
@@ -444,14 +446,14 @@ void Function3()
             bool PreviousCharLetter = false;
             for (size_t i = 0, c = strlen(Buffer); i < c; ++i)
             {
-                if (IsLetter(Buffer[i])) //Если текущий символ буква - сохраняем его
+                if (IsLetter(Buffer[i])) //Г…Г±Г«ГЁ ГІГҐГЄГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« ГЎГіГЄГўГ  - Г±Г®ГµГ°Г Г­ГїГҐГ¬ ГҐГЈГ®
                 {
                     PreviousCharLetter = true;
                     ++CurrentWordSize;
                 }
-                else //Текущий символ не буква - считаем что слово нашли
+                else //Г’ГҐГЄГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« Г­ГҐ ГЎГіГЄГўГ  - Г±Г·ГЁГІГ ГҐГ¬ Г·ГІГ® Г±Г«Г®ГўГ® Г­Г ГёГ«ГЁ
                 {
-                    if (PreviousCharLetter && CurrentWordSize && CurrentWordSize <= 3) //Если предыдущий символ являлся буквой и текущее слово не более 3-х символов
+                    if (PreviousCharLetter && CurrentWordSize && CurrentWordSize <= 3) //Г…Г±Г«ГЁ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГЁГ© Г±ГЁГ¬ГўГ®Г« ГїГўГ«ГїГ«Г±Гї ГЎГіГЄГўГ®Г© ГЁ ГІГҐГЄГіГ№ГҐГҐ Г±Г«Г®ГўГ® Г­ГҐ ГЎГ®Г«ГҐГҐ 3-Гµ Г±ГЁГ¬ГўГ®Г«Г®Гў
                     {
                         PreviousCharLetter = false;
                         char Char[128];
@@ -477,7 +479,7 @@ void Function3()
         }
         free(Buffer);
     }
-    else //Ошибка выделения памяти
+    else //ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ
     {
         printf("Error: memory allocation.\n");
     }
@@ -485,9 +487,9 @@ void Function3()
 //-----------------------------------------------------------------------------
 void Function4()
 {
-    size_t SentenceCount = 0; //Количество предложений
+    size_t SentenceCount = 0; //ГЉГ®Г«ГЁГ·ГҐГ±ГІГўГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГ©
     char **Array = CreateArraySentence(&SentenceCount);
-    for (size_t i = 0; i < SentenceCount; ++i) //Обходим все предложения
+    for (size_t i = 0; i < SentenceCount; ++i) //ГЋГЎГµГ®Г¤ГЁГ¬ ГўГ±ГҐ ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
     {
         char *Buffer = (char *)malloc(strlen(Array[i]) + 1);
         if (Buffer)
@@ -507,7 +509,7 @@ void Function4()
                 Word = strtok(NULL, " ");
             }
 
-            qsort(ArrayWord, Count, sizeof(ArrayWord[0]), PStrCmp); //Сортируем массив слов
+            qsort(ArrayWord, Count, sizeof(ArrayWord[0]), PStrCmp); //Г‘Г®Г°ГІГЁГ°ГіГҐГ¬ Г¬Г Г±Г±ГЁГў Г±Г«Г®Гў
 
             for (size_t j = 0; j < Count; ++j)
             {
@@ -524,17 +526,17 @@ void Function4()
             }
             free(Buffer);
         }
-        else //Ошибка выделения памяти
+        else //ГЋГёГЁГЎГЄГ  ГўГ»Г¤ГҐГ«ГҐГ­ГЁГї ГЇГ Г¬ГїГІГЁ
         {
             printf("Error: memory allocation.\n");
         }
     }
 
-    for (size_t i = 0; i < SentenceCount; ++i) //Очищаем память каждого предложения
+    for (size_t i = 0; i < SentenceCount; ++i) //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј ГЄГ Г¦Г¤Г®ГЈГ® ГЇГ°ГҐГ¤Г«Г®Г¦ГҐГ­ГЁГї
     {
         free(Array[i]);
     }
-    free(Array); //Очищаем память массива
+    free(Array); //ГЋГ·ГЁГ№Г ГҐГ¬ ГЇГ Г¬ГїГІГј Г¬Г Г±Г±ГЁГўГ 
 }
 //-----------------------------------------------------------------------------
 void Function5()
@@ -547,3 +549,7 @@ void Function6()
     exit(EXIT_SUCCESS);
 }
 //-----------------------------------------------------------------------------
+void Function7()
+{
+    printf("РµС‰Рµ РґРµР»Р°РµС‚СЃСЏ");
+}

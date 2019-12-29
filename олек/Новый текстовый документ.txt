@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+int operation(int mass[], int oper, int kol);
+
+
+int first_chet(int mass[], int kol);
+
+
+int last_nechet(int mass[], int kol);
+
+
+int sum_between_chet_nechet(int mass[], int kol);
+
+
+int sum_bef_chet_after_nechet(int mass[], int kol);
+
+
+int main()
+{  
+   int mass[100];
+   int oper=-1;
+   char sp=' ';
+   scanf("%d",&oper);
+   int kol=0;
+   while (sp==' '){
+       scanf("%d%c",&mass[kol++],&sp);
+   }
+   
+   int rez = operation(mass,oper,kol);
+   if(rez==-1){
+       printf("Данные некорректны\n");
+   }
+   else{
+       printf("%d\n",rez);
+   }
+    
+   
+    return 0;
+}
+
+int operation(int mass[], int oper, int kol){
+    switch(oper){
+        case 0:
+            return (first_chet(mass,kol));
+        case 1:
+            return (last_nechet(mass,kol));
+        case 2:
+            return (sum_between_chet_nechet(mass,kol));
+        case 3:
+            return (sum_bef_chet_after_nechet(mass,kol));
+        default:
+            return (-1);
+    }
+}
+
+
+int first_chet(int mass[], int kol){
+    int rez=-1;
+    for (int i=kol;i>=0;i--){
+        
+        if((mass[i]%2==0)&&(mass[i]!=0)){
+            rez=i;
+        }
+    }
+    return rez;
+} 
+
+
+int last_nechet(int mass[], int kol){
+    int rez=-1;
+   
+    for (int i=0;i<kol;i++){
+         
+        if (mass[i]%2!=0){
+            rez = i;
+           
+        }
+    }
+    return rez;
+}
+
+
+int sum_between_chet_nechet(int mass[], int kol){
+    int sum=-1;
+    int nach=first_chet(mass,kol);
+    int konec=last_nechet(mass,kol);
+    if((nach!=-1)&&(konec!=-1)){
+        sum=0;
+        for(int i=nach;i<konec;i++){
+            sum += abs(mass[i]);
+        }
+    }
+    return sum;
+}
+
+
+int sum_bef_chet_after_nechet(int mass[], int kol){
+    int sum=-1;
+    int chet=first_chet(mass,kol);
+    int nechet=last_nechet(mass,kol);
+    if((chet!=-1)||(nechet!=-1)){
+        sum=0;
+        for(int i=0;i<chet;i++){
+            sum += abs(mass[i]);
+        }
+        for(int i=nechet;i<kol;i++){
+            sum += abs(mass[i]);
+        }
+    }
+    return sum;
+}
